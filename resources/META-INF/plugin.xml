@@ -1,0 +1,35 @@
+<idea-plugin version="2">
+  <id>com.wuruihong.jetbrains.git-committer-switch</id>
+  <name>Git Committer Switch</name>
+  <version>1.0</version>
+  <vendor email="support@wuruihong.com" url="http://www.wuruihong.com">DevWing</vendor>
+
+  <description><![CDATA[
+      A tool to switch git committer easily.
+    ]]></description>
+
+  <change-notes><![CDATA[
+      <h4>0.0.1</h4>
+      <strong>Create</strong> Project
+    ]]>
+  </change-notes>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+  <idea-version since-build="145.0"/>
+
+  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+  <depends>com.intellij.modules.vcs</depends>
+
+  <extensions defaultExtensionNs="com.intellij">
+    <!-- Add your extensions here -->
+  </extensions>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>
