@@ -30,11 +30,13 @@
 
   <actions>
 
-    <action id="GitCommitterSwitch.Change" class="ChangeCommitterAction" text="Change Git Committer"
+    <action id="GitCommitterSwitch.Popup" class="ShowPopupAction" text="Change Git Committer..."
             description="Change git committer to one of the preset users.">
-      <add-to-group group-id="ToolsMenu" anchor="last"/>
+      <add-to-group group-id="VcsGroups" anchor="last"/>
       <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta C"/>
     </action>
+    <action id="GitCommitterSwitch.Change" class="ChangeAction" text="Change Git Committer"
+            description="Change the current git committer to the selected user."/>
   </actions>
 
 </idea-plugin>
