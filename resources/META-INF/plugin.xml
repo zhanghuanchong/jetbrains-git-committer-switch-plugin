@@ -37,6 +37,8 @@
     </action>
     <action id="GitCommitterSwitch.Change" class="ChangeAction" text="Change Git Committer"
             description="Change the current git committer to the selected user."/>
+    <action id="GitCommitterSwitch.Config" class="ConfigUsersAction" text="Configure git committer"
+            description="Configure available git committer"/>
   </actions>
 
 </idea-plugin>

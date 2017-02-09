@@ -30,5 +30,8 @@ public class ShowPopupAction extends QuickSwitchSchemeAction {
 
             defaultActionGroup.addAction(action);
         }
+
+        defaultActionGroup.addSeparator();
+        defaultActionGroup.addAction(new ConfigUsersAction());
     }
 }
