@@ -1,3 +1,5 @@
+package com.wuruihong.jetbrains.gitCommitterSwitch;
+
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.util.IconLoader;

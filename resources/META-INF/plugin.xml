@@ -30,14 +30,14 @@
 
   <actions>
 
-    <action id="GitCommitterSwitch.Popup" class="ShowPopupAction" text="Change Git Committer..."
+    <action id="GitCommitterSwitch.Popup" class="com.wuruihong.jetbrains.gitCommitterSwitch.ShowPopupAction" text="Change Git Committer..."
             description="Change git committer to one of the preset users.">
       <add-to-group group-id="VcsGroups" anchor="last"/>
       <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl meta C"/>
     </action>
-    <action id="GitCommitterSwitch.Change" class="ChangeAction" text="Change Git Committer"
+    <action id="GitCommitterSwitch.Change" class="com.wuruihong.jetbrains.gitCommitterSwitch.ChangeAction" text="Change Git Committer"
             description="Change the current git committer to the selected user."/>
-    <action id="GitCommitterSwitch.Config" class="ConfigUsersAction" text="Configure git committer"
+    <action id="GitCommitterSwitch.Config" class="com.wuruihong.jetbrains.gitCommitterSwitch.ConfigUsersAction" text="Configure git committer"
             description="Configure available git committer"/>
   </actions>
 

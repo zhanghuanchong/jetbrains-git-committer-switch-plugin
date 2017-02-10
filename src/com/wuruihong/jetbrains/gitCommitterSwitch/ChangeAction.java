@@ -1,3 +1,5 @@
+package com.wuruihong.jetbrains.gitCommitterSwitch;
+
 import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationType;
 import com.intellij.notification.Notifications;
