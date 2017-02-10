@@ -12,9 +12,12 @@ import javax.swing.*;
  * Created by hans on 2017/2/9.
  */
 public class ChangeAction extends AnAction {
+    private User user;
 
     @Override
     public void actionPerformed(AnActionEvent e) {
+
+
         Notification notification = new Notification(
             "GitCommitterSwitch",
             "Message",
@@ -27,5 +30,13 @@ public class ChangeAction extends AnAction {
             notification.expire();
         });
         timer.start();
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
