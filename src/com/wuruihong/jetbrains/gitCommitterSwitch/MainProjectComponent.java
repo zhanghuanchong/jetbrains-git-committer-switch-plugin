@@ -1,6 +1,7 @@
 package com.wuruihong.jetbrains.gitCommitterSwitch;
 
 import com.intellij.notification.EventLog;
+import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.project.Project;
@@ -8,6 +9,7 @@ import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.VcsDirectoryMapping;
 import com.intellij.openapi.vcs.impl.VcsEP;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
 import java.util.List;
@@ -15,7 +17,7 @@ import java.util.List;
 /**
  * Created by hans on 2017/2/10.
  */
-public class MainProjectComponent implements ProjectComponent {
+public class MainProjectComponent implements ProjectComponent, PersistentStateComponent {
     private Project project;
 
     public MainProjectComponent(Project project) {
@@ -49,10 +51,26 @@ public class MainProjectComponent implements ProjectComponent {
         VcsDirectoryMapping vcsDirectoryMapping = list.get(0);
         String dir = vcsDirectoryMapping.getDirectory();
         System.out.println("VcsDirectoryMapping: " + dir);
+
+        if (dir.isEmpty()) {
+            System.out.println("Empty Vcs directory mapping!");
+        }
+
     }
 
     @Override
     public void projectClosed() {
         // called when project is being closed
+    }
+
+    @Nullable
+    @Override
+    public Object getState() {
+        return null;
+    }
+
+    @Override
+    public void loadState(Object o) {
+
     }
 }
