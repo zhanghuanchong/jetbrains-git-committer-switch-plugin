@@ -3,11 +3,15 @@ package com.wuruihong.jetbrains.gitCommitterSwitch;
 import com.intellij.notification.EventLog;
 import com.intellij.openapi.components.PersistentStateComponent;
 import com.intellij.openapi.components.ProjectComponent;
+import com.intellij.openapi.components.State;
+import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.extensions.ExtensionPointName;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.VcsDirectoryMapping;
 import com.intellij.openapi.vcs.impl.VcsEP;
+import com.intellij.util.xmlb.XmlSerializerUtil;
+import com.intellij.util.xmlb.annotations.AbstractCollection;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -15,10 +19,14 @@ import java.io.File;
 import java.util.List;
 
 /**
- * Created by hans on 2017/2/10.
+ * Main Project Component
  */
-public class MainProjectComponent implements ProjectComponent, PersistentStateComponent {
+@State(name = "GitCommitterSwitchMainProjectComponent", storages = {@Storage("git-committer-switch.xml")})
+public class MainProjectComponent implements ProjectComponent, PersistentStateComponent<MainProjectComponent> {
     private Project project;
+
+    @AbstractCollection
+    private List<User> users;
 
     public MainProjectComponent(Project project) {
         this.project = project;
@@ -63,14 +71,21 @@ public class MainProjectComponent implements ProjectComponent, PersistentStateCo
         // called when project is being closed
     }
 
-    @Nullable
     @Override
-    public Object getState() {
-        return null;
+    public MainProjectComponent getState() {
+        return this;
     }
 
     @Override
-    public void loadState(Object o) {
+    public void loadState(MainProjectComponent o) {
+        XmlSerializerUtil.copyBean(o, this);
+    }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
