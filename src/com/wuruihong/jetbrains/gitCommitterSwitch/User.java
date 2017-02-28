@@ -61,4 +61,10 @@ public class User {
     public void setSelected(boolean selected) {
         this.selected = selected;
     }
+
+    @Override
+    public String toString() {
+        return this.getName() + " (" + this.getEmail() + ")" + (this.isSelected() ? "<Default>" : "") + "\n"
+                + (this.getComment() != null ? (this.getComment() + "\n") : "");
+    }
 }

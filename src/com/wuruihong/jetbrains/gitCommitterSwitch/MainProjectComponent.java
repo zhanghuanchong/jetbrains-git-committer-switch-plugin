@@ -21,6 +21,8 @@ public class MainProjectComponent implements ProjectComponent, PersistentStateCo
     @AbstractCollection
     private List<User> users = new ArrayList<>();
 
+    private String gitDir;
+
     public MainProjectComponent() {}
 
     public MainProjectComponent(Project project) {
@@ -52,13 +54,13 @@ public class MainProjectComponent implements ProjectComponent, PersistentStateCo
             return;
         }
         VcsDirectoryMapping vcsDirectoryMapping = list.get(0);
-        String dir = vcsDirectoryMapping.getDirectory();
-        System.out.println("VcsDirectoryMapping: " + dir);
+        this.gitDir = vcsDirectoryMapping.getDirectory();
+        System.out.println("VcsDirectoryMapping: " + this.gitDir);
 
-        if (dir.isEmpty()) {
+        if (this.gitDir.isEmpty()) {
             System.out.println("Empty Vcs directory mapping!");
+            this.gitDir = null;
         }
-
     }
 
     @Override
@@ -69,9 +71,15 @@ public class MainProjectComponent implements ProjectComponent, PersistentStateCo
     @Override
     public MainProjectComponent getState() {
         if (this.users.isEmpty()) {
+            if (this.gitDir != null) {
+                String file = this.gitDir + "/.git/config";
+            }
             User user = new User("Hans Zhang", "devwingcom@gmail.com");
             user.setSelected(true);
             this.users.add(user);
+        } else {
+            User user = this.users.get(0);
+            System.out.println(user.toString());
         }
         return this;
     }
