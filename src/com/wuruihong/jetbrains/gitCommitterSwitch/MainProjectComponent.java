@@ -1,40 +1,35 @@
 package com.wuruihong.jetbrains.gitCommitterSwitch;
 
-import com.intellij.notification.EventLog;
-import com.intellij.openapi.components.PersistentStateComponent;
-import com.intellij.openapi.components.ProjectComponent;
-import com.intellij.openapi.components.State;
-import com.intellij.openapi.components.Storage;
-import com.intellij.openapi.extensions.ExtensionPointName;
+import com.intellij.openapi.components.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vcs.ProjectLevelVcsManager;
 import com.intellij.openapi.vcs.VcsDirectoryMapping;
-import com.intellij.openapi.vcs.impl.VcsEP;
 import com.intellij.util.xmlb.XmlSerializerUtil;
 import com.intellij.util.xmlb.annotations.AbstractCollection;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Main Project Component
  */
-@State(name = "GitCommitterSwitchMainProjectComponent", storages = {@Storage("git-committer-switch.xml")})
+@State(name = "GitCommitterSwitchMainProjectComponent", storages = {@Storage(StoragePathMacros.WORKSPACE_FILE)})
 public class MainProjectComponent implements ProjectComponent, PersistentStateComponent<MainProjectComponent> {
     private Project project;
 
     @AbstractCollection
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
+
+    public MainProjectComponent() {}
 
     public MainProjectComponent(Project project) {
+        this();
         this.project = project;
     }
 
     @Override
     public void initComponent() {
-
     }
 
     @Override
@@ -73,6 +68,11 @@ public class MainProjectComponent implements ProjectComponent, PersistentStateCo
 
     @Override
     public MainProjectComponent getState() {
+        if (this.users.isEmpty()) {
+            User user = new User("Hans Zhang", "devwingcom@gmail.com");
+            user.setSelected(true);
+            this.users.add(user);
+        }
         return this;
     }
 
